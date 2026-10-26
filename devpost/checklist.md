@@ -10,7 +10,7 @@ Build mode: fast, explicitly selected by owner X on October 25, 2026. Fast mode 
 
 ## Slices
 
-- [ ] **1. Create and export a first business website**
+- [x] **1. Create and export a first business website**
   Becomes usable: The editor starts locally, asks “What would you like to create today?”, accepts a website brief and business details, previews a Clean Professional page, and exports a standalone HTML file that opens offline. Safe text handling, validated contact targets, and the three-service limit are included from the first usable version.
   Why now: This delivers the unique edit-preview-export kernel immediately while bootstrapping the app inside the same slice. Safe rendering and safe link construction are foundational and must not be postponed.
   PRD ref: `prd.md > The Core Journey`; `prd.md > Features and Behavior > Creation and Business Details`; `prd.md > Features and Behavior > Standalone HTML Export`; `prd.md > States and Boundaries`.
@@ -20,7 +20,7 @@ Build mode: fast, explicitly selected by owner X on October 25, 2026. Fast mode 
   Learner check: Start the app using the README, enter a sample business and service, inspect the preview, export the page, then open that file offline and confirm the displayed details and contact links.
   Commit: `Build first ShanX page and standalone export`
 
-- [ ] **2. Drafts restore after browser restart and can be cleared**
+- [ ] **2. Restore and clear local drafts; choose a second visual theme**
   Becomes usable: Business information, website brief, selected theme, and contact choices persist locally across editor sessions at the documented origin; Clear Saved Data removes the draft and resets the editor without removing previous exports.
   Why now: Local browser storage is the key technical uncertainty identified during planning. Verify the real close-and-reopen journey before finishing the remaining design work.
   PRD ref: `prd.md > Features and Behavior > Locally Saved Drafts`; `prd.md > States and Boundaries`.
@@ -28,21 +28,23 @@ Build mode: fast, explicitly selected by owner X on October 25, 2026. Fast mode 
   Build: Add versioned localStorage read/write/clear behavior, shape validation, graceful in-memory fallback, truthful unsaved warning, and confirmed Clear Saved Data action. Add dependency-free automated storage/model tests.
   Verify (mechanical): Run `node --test tests/*.test.mjs`; in a normal browser profile, enter unique draft data and theme, close the test browser fully, reopen it with the same profile, visit the exact same URL, and verify all fields restore. Clear the draft, close/reopen again, confirm reset, and confirm an earlier downloaded export remains. Exercise blocked/corrupt/quota storage paths and verify the warning and in-memory behavior.
   Learner check: Enter a business detail, close and reopen the browser at the same app address, and confirm it returns. Then use Clear Saved Data and confirm the editor resets while an exported file remains.
-  Commit: `Persist and clear ShanX local draft`
+  Additional owner-approved scope (October 25): Implement Bold Creative's separate semantic layout and theme selection here, preserving Clean Professional. Verify both actual theme exports offline, safe text/contacts, restored theme choice, and responsive exported layouts. Owner reviews persistence and both themes together before proceeding. References: `prd.md > Look and Feel`; `spec.md > Theme Renderer and Live Preview` (under Components).
+  Commit: `Persist local drafts and add Bold Creative theme`
 
-- [ ] **3. Switch between distinct themes and complete responsive verification**
+- [ ] **3. Complete responsive workspace and integrated verification**
   Becomes usable: Users can select Clean Professional or Bold Creative; each preview and export has distinct structure and styling. Desktop keeps editor left and preview right; phone/tablet layouts provide responsive Edit and Preview views, verified through browser viewport simulation on MONSTER.
   Why now: The core journey and persistence have already been proven. This completes the remaining approved visual behavior and allows a full cross-journey verification without delaying the unique kernel.
   PRD ref: `prd.md > Look and Feel`; `prd.md > Screens and Layout`; `prd.md > Features and Behavior > Live Preview and Themes`; `prd.md > The Core Journey`.
   Spec ref: `spec.md > Look and Feel`; `spec.md > Components > Responsive Workspace Navigation`; `spec.md > Components > Theme Renderer and Live Preview`; `spec.md > Components > Verification and Evidence`; `spec.md > Independent Verification Plan for Stage 5`.
-  Build: Implement the Bold Creative semantic layout and distinct theme renderer; finish responsive editor views, keyboard navigation, and visible focus; complete browser security, theme, contact, persistence, and offline-export test coverage. Preserve test outputs, browser observations, downloaded-file hashes, and repair evidence. Check whether a supported Proof Before Done access path is available; use it only for its supported file checks, without modifying Project #01. No Proof Before Done connector is exposed in this Codex session; if no approved path is available, record that limitation and retain independent checks.
+  Build: Reuse the owner-requested Slice 2 theme implementation; finish responsive editor views, keyboard navigation, and visible focus; complete browser security, theme, contact, persistence, and offline-export test coverage. Preserve test outputs, browser observations, downloaded-file hashes, and repair evidence. Check whether a supported Proof Before Done access path is available; use it only for its supported file checks, without modifying Project #01. If no approved path is available, record that limitation and retain independent checks.
   Verify (mechanical): Run `node --test tests/*.test.mjs`; run the real browser through desktop and simulated phone/tablet viewport sizes; assert theme outputs differ in semantic structure as well as palette; test valid/invalid contact targets and hostile markup; reopen actual exports with networking disabled and check there are no remote requests. Record viewport simulation as simulation, not physical-device operation. Preserve output hashes and observed results; do not claim human acceptance.
   Learner check: In the running app, compare both themes and try the Edit/Preview views using the documented browser viewport simulation. Note any visual, confusing, or broken behavior for final review; physical phone/tablet access is not claimed.
   Commit: `Add Bold Creative theme and responsive workspace`
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — after slice 1; owner starts the local app, tries the editor/preview/export loop, and gives feedback before the remaining work continues.
+- [x] Early usable behavior explored — after slice 1; owner starts the local app, tries the editor/preview/export loop, and gives feedback before the remaining work continues.
+- [ ] Slice 2 owner review — X tests draft restoration/clear and compares both themes before Slice 3 work proceeds.
 - [ ] Final kick-the-tires exploration and feedback completed — after slice 3 and the independent verification pass; owner freely tries the completed core journey and reports anything broken, confusing, or worth changing. Do not mark done until feedback is resolved and the owner confirms readiness.
 
 ## Final Review
@@ -62,6 +64,13 @@ Reflection: [record offered/answered/declined/already covered; personal answer b
 Activity mode: [live app and editor, explicit static fallback, focused alternative, prior practice, or recap]
 
 ## Revisions
+
+### October 25, 2026 — Owner feedback and next checkpoint
+
+- X demonstrated entering business information and three services, exporting HTML, and opening it in Edge; confirmed correct displayed business details and contact information. Feedback: clean and professional; preserve the first theme. Full bounded record: `slice1-owner-review.md`. No owner contact-link click or disconnected-network test is claimed.
+- Slice 1 committed as `68097f2`; completion and early-review boxes checked after verified implementation and owner feedback. Git initially lacked author identity; commit used command-only `Codex <codex@localhost>`, without global configuration changes.
+- X explicitly requested local persistence and the second theme in Slice 2, followed by hands-on review before proceeding. Moved second-theme implementation from Slice 3 to Slice 2; Slice 3 retains responsive Edit/Preview workspace completion and full integration checks. Product scope and architecture stay unchanged.
+- Slice 2 implementation is mechanically verified, awaiting X's review before commit/check-off: 12 Node tests and 11 real Edge browser checks passed. Full isolated browser restarts restored every field and theme; clear/reset preserved unrelated storage and exports; corrupt/blocked/quota/removal-failure paths remained usable; both actual downloads passed offline and hostile-input checks. Evidence, screenshots and hashes: `private-evidence/stage5-slice2/`. No physical-device or owner Slice 2 testing is claimed. The historical pending Slice 1 checkpoint below is superseded by this owner-review record.
 
 ### October 25, 2026 — Slice 1 recovery checkpoint
 

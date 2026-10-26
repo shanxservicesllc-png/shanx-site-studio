@@ -20,7 +20,7 @@ Build mode: fast, explicitly selected by owner X on October 25, 2026. Fast mode 
   Learner check: Start the app using the README, enter a sample business and service, inspect the preview, export the page, then open that file offline and confirm the displayed details and contact links.
   Commit: `Build first ShanX page and standalone export`
 
-- [ ] **2. Restore and clear local drafts; choose a second visual theme**
+- [x] **2. Restore and clear local drafts; choose a second visual theme**
   Becomes usable: Business information, website brief, selected theme, and contact choices persist locally across editor sessions at the documented origin; Clear Saved Data removes the draft and resets the editor without removing previous exports.
   Why now: Local browser storage is the key technical uncertainty identified during planning. Verify the real close-and-reopen journey before finishing the remaining design work.
   PRD ref: `prd.md > Features and Behavior > Locally Saved Drafts`; `prd.md > States and Boundaries`.
@@ -44,7 +44,7 @@ Build mode: fast, explicitly selected by owner X on October 25, 2026. Fast mode 
 ## Hands-on Checkpoints
 
 - [x] Early usable behavior explored — after slice 1; owner starts the local app, tries the editor/preview/export loop, and gives feedback before the remaining work continues.
-- [ ] Slice 2 owner review — X tests draft restoration/clear and compares both themes before Slice 3 work proceeds.
+- [x] Slice 2 owner review — X tested draft restoration across browser close/reopen, exported and compared both themes, confirmed Clear Saved Data reset persisted on reopening, and reported three downloaded HTML files remained intact. See devpost/slice2-owner-review.md.
 - [ ] Final kick-the-tires exploration and feedback completed — after slice 3 and the independent verification pass; owner freely tries the completed core journey and reports anything broken, confusing, or worth changing. Do not mark done until feedback is resolved and the owner confirms readiness.
 
 ## Final Review

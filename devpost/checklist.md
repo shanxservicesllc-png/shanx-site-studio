@@ -31,7 +31,7 @@ Build mode: fast, explicitly selected by owner X on October 25, 2026. Fast mode 
   Additional owner-approved scope (October 25): Implement Bold Creative's separate semantic layout and theme selection here, preserving Clean Professional. Verify both actual theme exports offline, safe text/contacts, restored theme choice, and responsive exported layouts. Owner reviews persistence and both themes together before proceeding. References: `prd.md > Look and Feel`; `spec.md > Theme Renderer and Live Preview` (under Components).
   Commit: `Persist local drafts and add Bold Creative theme`
 
-- [ ] **3. Complete responsive workspace and integrated verification**
+- [x] **3. Complete responsive workspace and integrated verification**
   Becomes usable: Users can select Clean Professional or Bold Creative; each preview and export has distinct structure and styling. Desktop keeps editor left and preview right; phone/tablet layouts provide responsive Edit and Preview views, verified through browser viewport simulation on MONSTER.
   Why now: The core journey and persistence have already been proven. This completes the remaining approved visual behavior and allows a full cross-journey verification without delaying the unique kernel.
   PRD ref: `prd.md > Look and Feel`; `prd.md > Screens and Layout`; `prd.md > Features and Behavior > Live Preview and Themes`; `prd.md > The Core Journey`.
@@ -45,7 +45,7 @@ Build mode: fast, explicitly selected by owner X on October 25, 2026. Fast mode 
 
 - [x] Early usable behavior explored — after slice 1; owner starts the local app, tries the editor/preview/export loop, and gives feedback before the remaining work continues.
 - [x] Slice 2 owner review — X tested draft restoration across browser close/reopen, exported and compared both themes, confirmed Clear Saved Data reset persisted on reopening, and reported three downloaded HTML files remained intact. See devpost/slice2-owner-review.md.
-- [ ] Final kick-the-tires exploration and feedback completed — after slice 3 and the independent verification pass; owner freely tries the completed core journey and reports anything broken, confusing, or worth changing. Do not mark done until feedback is resolved and the owner confirms readiness.
+- [x] Final kick-the-tires exploration and feedback completed — owner tried the core journey across the Slice 1, 2 and 3 reviews, including actual exports, persistence, safe clearing, and responsive Edit/Preview toggling; desktop toggle visibility confusion was explained and resolved. No unaddressed website defect was reported. See slice1-owner-review.md, slice2-owner-review.md, slice3-owner-review.md. Explicit ready-to-ship acceptance remains pending under Final Review.
 
 ## Final Review
 
@@ -55,15 +55,23 @@ Build mode: fast, explicitly selected by owner X on October 25, 2026. Fast mode 
 
 - [ ] Learning activity complete — after final revisions, follow one real action through 2–3 actual code locations by default; use an evidence-based focused alternative or recap if appropriate.
 - [ ] Optional edit and transfer reflection addressed — offer one safe, incidental edit and one optional transfer question; record tried/kept/reverted/declined honestly.
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse.
+- [x] `devpost/app-map.html` generated from finished code, checked with actual source anchors, and available for owner to open; the plain-language route and reusable practice will be presented to owner. No claim of completed owner source tour.
 
-Activity and evidence: [record actual activity, tests, code references, and unfinished work]
-Route and stops: [record actual paths/symbols and completed stops, or label as reference only]
-Edit outcome: [record tried/kept/reverted/declined/not applicable plus verification]
-Reflection: [record offered/answered/declined/already covered; personal answer belongs only in ignored learner profile]
-Activity mode: [live app and editor, explicit static fallback, focused alternative, prior practice, or recap]
+Activity and evidence: A brief evidence-based recap is prepared: a concrete export action goes from the editor button through safe HTML generation to an offline standalone business website. Owner did not perform a guided live code tour; practical browser use and reviewer feedback are documented in slice1-owner-review.md, slice2-owner-review.md, and slice3-owner-review.md. Browser evidence remains under private-evidence.
+Route and stops: Reference only, not owner-toured: app/main.js ($('export').addEventListener), app/export.js (exportHTML and downloadHTML), app/themes.js (siteTree and themeCSS). All actual source anchors verified.
+Edit outcome: Optional safe incidental edit not selected, performed, or declined as of this checkpoint. Do not claim it happened.
+Reflection: Owner already gave practical process feedback about priorities, not repeating completed work, and the value of testing observable results; optional transfer reflection not separately answered. Do not invent a personal learning response.
+Activity mode: Evidence-based recap and standalone reference guide devpost/app-map.html (offline Edge checked). Live code-tour completion not claimed.
 
 ## Revisions
+
+### October 25, 2026, 10:50 PM Eastern — Owner's final responsive-workspace check
+
+- Stage 5 Slice 3 implementation `07730f2c18c26137ecbb88b9823e8a483972c35d` preserved. 12/12 Node tests passed following reboot; browser check evidence from before the crash contains 6/6 PASS at desktop, simulated tablet, and simulated phone viewport sizes, including real offline export tests. The owner confirmed that Edit and Preview definitely switched at compact width. Owner also recognized that the buttons disappear when both panels are displayed side by side in a wide window. See `slice3-owner-review.md`.
+- Owner's core journey was explored through combined Slice 1, 2 and 3 hands-on sessions; no repeated content-entry or export testing was requested. Last point of confusion was the intentional desktop switch visibility and was resolved in conversation.
+- The standalone source guide `devpost/app-map.html` was created against commit `07730f2`, verified with actual project function names and paths, then loaded locally with networking disabled in Microsoft Edge. It makes no claim that the owner has completed a live source tour.
+- The optional tiny edit is not yet chosen or declined, and **explicit ready-to-ship owner signoff remains pending**. The technical file preparation and no-defect observations are not a substitute for that signoff. Stage 6 public GitHub, video, Devpost copy and submission are separate and have not been performed.
+- Windows encountered Intel graphics `igdkmdn64.sys` VIDEO_TDR_FAILURE `0x116` during work. Windows rebooted; Studio's local server was restored and HTTP 200 checked. No claim about root cause or future system stability.
 
 ### October 25, 2026 — Owner feedback and next checkpoint
 

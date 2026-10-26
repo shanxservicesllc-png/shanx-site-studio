@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShanX Site Studio | Source Map</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{max-width:900px;margin:0 auto;padding:36px 22px;color:#142949;background:#f4f7fc;font:16px/1.65 system-ui,Arial,sans-serif}h1{font-size:clamp(2rem,5vw,3rem);line-height:1.14;margin:14px 0}h2{font-size:1.25rem;margin-top:32px}p{max-width:70ch}a{color:#174bb3}a:focus-visible{outline:3px solid #bd8500;outline-offset:3px}.eyebrow{font-size:.77rem;letter-spacing:.13em;font-weight:800;color:#2559be}.note{background:#fff;border:1px solid #d7e1ee;border-radius:12px;padding:20px;margin:20px 0}code{font-size:.92em;padding:.12em .3em;border-radius:4px;background:#e6edf9;overflow-wrap:anywhere}.map{background:white;border:1px solid #dae3f0;border-radius:12px;padding:16px;overflow-x:auto}.steps{display:grid;grid-template-columns:repeat(3,minmax(175px,1fr));gap:10px;align-items:center}.step{padding:16px;border-radius:9px;background:#eaf0fd;border:1px solid #c6d5ee;min-height:130px}.step b{display:block}.arrow{text-align:center;font-size:1.3rem;color:#164db2}.trace{margin:18px 0;padding-left:22px}.trace li{margin:11px 0}footer{border-top:1px solid #d7e1ee;padding-top:18px;font-size:.86rem;color:#53657e} @media(max-width:650px){.steps{grid-template-columns:1fr}.step{min-height:0}.arrow{transform:rotate(90deg)}}@media print{body{background:white}.note,.map{break-inside:avoid}}
+</style>
+</head>
+<body>
+<p class="eyebrow">X13 PROJECT #02 / TECHNICAL SOURCE MAP</p>
+<h1>ShanX Site Studio</h1>
+<p>ShanX Site Studio helps someone create a simple local business page, choose between two genuinely different themes, see their edits, save their browser draft, and download a standalone HTML website. The app stays local. It does not use an AI service or require hosting.</p>
+<div class="note">
+<strong>Launch on MONSTER</strong>
+<p>From the project folder, run <code>python -m http.server 8000 --bind 127.0.0.1 --directory app</code>, then open <code>http://127.0.0.1:8000/</code> on MONSTER. If Windows restarts, restart this server. Previously downloaded HTML pages open without the server.</p>
+</div>
+<h2>One visible action, three source locations</h2>
+<p>This is a <strong>reference route</strong> showing how clicking Export HTML produces a real file; it does not claim someone already toured the code.</p>
+<div class="map" role="img" aria-label="Three stages: export button and event listener in app main.js, safe output generation in app export.js, website structure and themes in app themes.js, resulting downloadable standalone HTML.">
+<div class="steps">
+<div class="step"><b>1. User clicks Export</b><code>app/main.js</code><p>Event listener on <code>#export</code> runs the download function.</p></div>
+<div class="step"><b>2. The file is built</b><code>app/export.js</code><p><code>exportHTML</code> serializes safe website markup. <code>downloadHTML</code> triggers the browser download.</p></div>
+<div class="step"><b>3. The design is chosen</b><code>app/themes.js</code><p><code>siteTree</code> and <code>themeCSS</code> supply the selected site's structure and CSS.</p></div>
+</div>
+<p class="arrow" aria-hidden="true">↓</p><p><strong>Visible result:</strong> a self-contained <code>.html</code> file in Downloads that works offline.</p>
+</div>
+<h2>Try the same route in source</h2>
+<ol class="trace">
+<li>Open <code>app/main.js</code> and find <code>$('export').addEventListener</code>. It connects the button to the export operation.</li>
+<li>Open <code>app/export.js</code> and find <code>export function exportHTML</code> then <code>downloadHTML</code>. These turn user data into escaped HTML and request a real download.</li>
+<li>Open <code>app/themes.js</code> and find <code>export function siteTree</code> and <code>export function themeCSS</code>. These keep the two designs different beyond a color change.</li>
+</ol>
+<h2>To change something, start here</h2>
+<div class="note">
+<p><strong>Opening or editor labels:</strong> <code>app/index.html</code></p>
+<p><strong>Mobile Edit/Preview behavior:</strong> <code>app/main.js</code>, function <code>setWorkspaceView</code>, and <code>app/styles.css</code>, rule <code>@media(max-width:900px)</code></p>
+<p><strong>Draft restore and erase:</strong> <code>app/storage.js</code>, functions <code>readDraft</code>, <code>saveDraft</code>, <code>clearDraft</code></p>
+<p><strong>Exported site's look and layout:</strong> <code>app/themes.js</code>; both themes reuse <code>app/export.js</code></p>
+<p><strong>Tests:</strong> <code>tests/*.test.mjs</code>, browser evidence under <code>devpost/private-evidence/stage5-slice2</code> and <code>stage5-slice3</code></p>
+</div>
+<h2>A practice to reuse</h2>
+<p>Define success as something observable before calling a feature finished. In this project, the requirements in <code>devpost/spec.md</code> turned into actual checks: both distinct themes opened as downloaded HTML without network access; saved drafts restored; a narrow viewport showed Edit and Preview while desktop displayed both. This made it possible to distinguish tested behavior from assumptions, and to preserve the working result in Git before moving to another app.</p>
+<footer>
+<p>Source snapshot: <code>07730f2c18c26137ecbb88b9823e8a483972c35d</code>, responsive workspace commit. Created October 25, 2026 Eastern. This map is a reference; future changes can make paths or behavior drift. This guide itself is standalone and needs no network access.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+/devpost/learner-profile.md
+/devpost/private-evidence/
+.env
+.env.*
+!.env.example

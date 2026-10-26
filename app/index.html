@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ShanX Site Studio</title><link rel="icon" href="data:,"><link rel="stylesheet" href="./styles.css"><script type="module" src="./main.js"></script></head>
+<body>
+<header class="app-header"><a class="logo" href="./"><span class="mark">S<span>X</span></span><span>ShanX <strong>Site Studio</strong></span></a><span class="local-tag">LOCAL WORKSPACE</span></header>
+<main>
+<section id="welcome" class="welcome">
+<p class="eyebrow">YOUR BUSINESS. YOUR WEBSITE.</p><h1>What would you like<br>to create today?</h1>
+<p class="intro">Give your business a place of its own.<br>Shape the details, see your page, and take it with you.</p>
+<form id="start-form"><label for="brief">Describe the website you have in mind</label><textarea id="brief" rows="3" placeholder="A welcoming website for my local service business…"></textarea><p class="hint">Your brief is a reference note. You write the content; nothing is sent to AI.</p><button class="primary" type="submit">Create my website <span aria-hidden="true">→</span></button></form>
+<div class="welcome-notes"><span>01 · Make it yours</span><span>02 · Preview live</span><span>03 · Export your HTML</span></div>
+</section>
+<section id="workspace" hidden>
+<div class="workspace-bar"><div><p class="eyebrow">YOUR WEBSITE, TAKING SHAPE</p><h1>Make it yours.</h1></div><div class="actions"><span class="theme-label">Clean Professional</span><button id="export" class="primary" type="button">Export HTML <span aria-hidden="true">↗</span></button></div></div>
+<p id="status" class="status" role="status">Slice 1 preview · Changes stay in this tab only. Export before closing.</p>
+<div class="workspace-grid">
+<section class="editor" aria-label="Business details">
+<details class="brief-note"><summary>Your website brief</summary><label for="websiteBrief">Reference note — not exported</label><textarea id="websiteBrief" rows="3"></textarea></details>
+<div class="section-title"><span>01</span><h2>The essentials</h2></div>
+<label for="businessName">Business name</label><input id="businessName" autocomplete="organization" placeholder="Your business name">
+<label for="description">Business description</label><textarea id="description" rows="4" placeholder="Tell visitors what you do and who you help."></textarea>
+<div class="section-title"><span>02</span><h2>Your services</h2></div><p class="hint">A little focus goes a long way. Add up to three.</p>
+<div id="services"></div><button id="add-service" type="button" class="secondary">+ Add service</button>
+<div class="section-title"><span>03</span><h2>Start a conversation</h2></div>
+<label for="email">Contact email</label><input id="email" type="text" inputmode="email" autocomplete="email" aria-describedby="email-hint"><p id="email-hint" class="hint"></p>
+<label for="telephone">Telephone</label><input id="telephone" type="tel" autocomplete="tel" aria-describedby="phone-hint"><p id="phone-hint" class="hint"></p>
+<label for="ctaLabel">Contact button label</label><input id="ctaLabel" placeholder="e.g. Let's talk">
+<label for="ctaTarget">Contact button destination</label><select id="ctaTarget" aria-describedby="cta-hint"><option value="email">Email</option><option value="phone">Phone</option></select><p id="cta-hint" class="hint"></p>
+</section>
+<section class="preview-panel" aria-label="Website preview"><div class="preview-top"><span><i aria-hidden="true"></i> LIVE PREVIEW</span><span>Clean Professional</span></div><iframe id="preview" title="Live website preview" sandbox="allow-same-origin"></iframe><p class="preview-foot">Your exported page is one self-contained file. No hosting or subscription required.</p></section>
+</div></section>
+</main>
+<footer class="app-footer">ShanX Services LLC <span>Built here. Yours to take anywhere.</span></footer>
+</body></html>

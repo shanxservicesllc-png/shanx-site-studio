@@ -49,12 +49,12 @@ Build mode: fast, explicitly selected by owner X on October 25, 2026. Fast mode 
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship. Record requested fixes below as unchecked tasks; if none are needed, record that outcome and wait for explicit owner confirmation.
+- [x] Final review complete — no unresolved website defects reported during owner-operated core-journey reviews. On October 25, 2026, owner explicitly said GO to publishing ShanX Site Studio publicly with the same MIT license as Project #01. This is approval to publish the GitHub source, not a claim that the Devpost form, video, or exit survey has been completed.
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — after final revisions, follow one real action through 2–3 actual code locations by default; use an evidence-based focused alternative or recap if appropriate.
-- [ ] Optional edit and transfer reflection addressed — offer one safe, incidental edit and one optional transfer question; record tried/kept/reverted/declined honestly.
+- [x] Learning activity complete — concise evidence-based recap selected to respect owner's time-sensitive instruction to finish and submit: an export click in app/main.js calls downloadHTML in app/export.js, which serializes the structure/styles from app/themes.js into a standalone HTML download. The same journey and offline result were already tested in actual owner sessions; this is a recap rather than a claim of a hands-on source tour. See devpost/app-map.html.
+- [x] Optional edit and transfer reflection addressed — a harmless heading-label edit in app/index.html and an optional 'What would you do differently starting another app?' reflection were offered as optional. The owner explicitly prioritized immediate shipping instead of additional exercises. No edit was made and no reflection answer was supplied. Both were skipped, not claimed as tried.
 - [x] `devpost/app-map.html` generated from finished code, checked with actual source anchors, and available for owner to open; the plain-language route and reusable practice will be presented to owner. No claim of completed owner source tour.
 
 Activity and evidence: A brief evidence-based recap is prepared: a concrete export action goes from the editor button through safe HTML generation to an offline standalone business website. Owner did not perform a guided live code tour; practical browser use and reviewer feedback are documented in slice1-owner-review.md, slice2-owner-review.md, and slice3-owner-review.md. Browser evidence remains under private-evidence.

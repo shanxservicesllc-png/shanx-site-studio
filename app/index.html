@@ -4,6 +4,7 @@
 <body>
 <header class="app-header"><a class="logo" href="./"><span class="mark">S<span>X</span></span><span>ShanX <strong>Site Studio</strong></span></a><span class="local-tag">LOCAL WORKSPACE</span></header>
 <main>
+<p id="save-status" class="status" role="status"></p>
 <section id="welcome" class="welcome">
 <p class="eyebrow">YOUR BUSINESS. YOUR WEBSITE.</p><h1>What would you like<br>to create today?</h1>
 <p class="intro">Give your business a place of its own.<br>Shape the details, see your page, and take it with you.</p>
@@ -11,8 +12,8 @@
 <div class="welcome-notes"><span>01 · Make it yours</span><span>02 · Preview live</span><span>03 · Export your HTML</span></div>
 </section>
 <section id="workspace" hidden>
-<div class="workspace-bar"><div><p class="eyebrow">YOUR WEBSITE, TAKING SHAPE</p><h1>Make it yours.</h1></div><div class="actions"><span class="theme-label">Clean Professional</span><button id="export" class="primary" type="button">Export HTML <span aria-hidden="true">↗</span></button></div></div>
-<p id="status" class="status" role="status">Slice 1 preview · Changes stay in this tab only. Export before closing.</p>
+<div class="workspace-bar"><div><p class="eyebrow">YOUR WEBSITE, TAKING SHAPE</p><h1>Make it yours.</h1></div><div class="actions"><div><label for="theme">Website theme</label><select id="theme"><option value="clean-professional">Clean Professional</option><option value="bold-creative">Bold Creative</option></select></div><button id="export" class="primary" type="button">Export HTML <span aria-hidden="true">↗</span></button><button id="clear-data" class="secondary" type="button">Clear Saved Data</button></div></div>
+<p id="status" class="status" role="status">Your page stays on this computer until you choose to share its exported file.</p>
 <div class="workspace-grid">
 <section class="editor" aria-label="Business details">
 <details class="brief-note"><summary>Your website brief</summary><label for="websiteBrief">Reference note — not exported</label><textarea id="websiteBrief" rows="3"></textarea></details>
@@ -27,7 +28,7 @@
 <label for="ctaLabel">Contact button label</label><input id="ctaLabel" placeholder="e.g. Let's talk">
 <label for="ctaTarget">Contact button destination</label><select id="ctaTarget" aria-describedby="cta-hint"><option value="email">Email</option><option value="phone">Phone</option></select><p id="cta-hint" class="hint"></p>
 </section>
-<section class="preview-panel" aria-label="Website preview"><div class="preview-top"><span><i aria-hidden="true"></i> LIVE PREVIEW</span><span>Clean Professional</span></div><iframe id="preview" title="Live website preview" sandbox="allow-same-origin"></iframe><p class="preview-foot">Your exported page is one self-contained file. No hosting or subscription required.</p></section>
+<section class="preview-panel" aria-label="Website preview"><div class="preview-top"><span><i aria-hidden="true"></i> LIVE PREVIEW</span><span id="preview-theme">Clean Professional</span></div><iframe id="preview" title="Live website preview" sandbox="allow-same-origin"></iframe><p class="preview-foot">Your exported page is one self-contained file. No hosting or subscription required.</p></section>
 </div></section>
 </main>
 <footer class="app-footer">ShanX Services LLC <span>Built here. Yours to take anywhere.</span></footer>

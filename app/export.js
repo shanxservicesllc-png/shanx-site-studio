@@ -1,4 +1,4 @@
-import {siteTree,siteCSS} from './themes.js';
+import {siteTree,themeCSS} from './themes.js';
 export function escapeHTML(value) {
   return String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
@@ -8,7 +8,7 @@ export function serialize(tree) {
   return '<'+tree.tag+attrs+'>'+tree.children.map(serialize).join('')+'</'+tree.tag+'>';
 }
 export function exportHTML(draft) {
-  return '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escapeHTML(draft.businessName || 'Business website')+'</title><style>'+siteCSS+'</style></head><body>'+serialize(siteTree(draft))+'</body></html>';
+  return '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escapeHTML(draft.businessName || 'Business website')+'</title><style>'+themeCSS(draft.theme)+'</style></head><body>'+serialize(siteTree(draft))+'</body></html>';
 }
 export function filename(name) {
   const stem=String(name).normalize('NFKD').replace(/[^a-zA-Z0-9 -]/g,'').trim().replace(/\s+/g,'-').slice(0,70);

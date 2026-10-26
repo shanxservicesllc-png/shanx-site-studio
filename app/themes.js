@@ -10,6 +10,7 @@ a{color:#154dc4}a:focus-visible{outline:3px solid #d99b20;outline-offset:5px}h1,
 const node = (tag, attrs={}, children=[]) => ({tag,attrs,children});
 const textBlock = (tag,text,attrs={}) => node(tag,attrs,[String(text ?? '')]);
 export function siteTree(draft) {
+  if (draft.theme==='bold-creative') return boldTree(draft);
   const targets=contacts(draft);
   const services=draft.services.slice(0,3).filter(s=>s.name || s.description);
   const action=draft.ctaLabel ? textBlock(targets.cta?'a':'span',draft.ctaLabel,
@@ -33,5 +34,28 @@ export function siteTree(draft) {
         ...(draft.telephone?[textBlock(targets.phone?'a':'p',draft.telephone,targets.phone?{href:targets.phone}:{})]:[])
       ])
     ])])
+  ]);
+}
+
+const boldCSS = `
+*{box-sizing:border-box}body{margin:0;background:#171c1b;color:#f2f3e9;font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;overflow-wrap:anywhere}a{color:#b9efdc}a:focus-visible{outline:3px solid #e6c46b;outline-offset:6px}h1,h2,h3,p{margin-top:0}.bold-wrap{max-width:1200px;margin:auto;padding:0 6%}.editorial-header{display:flex;justify-content:space-between;align-items:center;gap:25px;padding-top:28px;padding-bottom:28px;border-bottom:1px solid #43504a}.wordmark{font-weight:800;letter-spacing:-.5px;max-width:65%}.editorial-header a{text-decoration:none;font-size:13px;text-transform:uppercase;letter-spacing:2px}.dramatic-hero{padding-top:78px;padding-bottom:78px;display:grid;grid-template-columns:2fr 1fr;gap:36px;align-items:end}.hero-title{font-size:clamp(3rem,8vw,7rem);font-weight:850;line-height:.98;letter-spacing:-.055em;margin-bottom:0}.hero-note{border-top:3px solid #e3c274;padding-top:22px}.hero-note p{white-space:pre-wrap;color:#d3ded7}.cta{display:inline-block;background:#b7efda;color:#18241f;text-decoration:none;padding:14px 22px;font-weight:750;border-radius:0}.cta-inactive{background:#3c4942;color:#e1e6e2}.editorial-services{background:#c7eddd;color:#172d25;padding-top:50px;padding-bottom:56px}.editorial-services h2{font-family:Georgia,serif;font-size:2.7rem;font-weight:400}.service-row{display:grid;grid-template-columns:65px 1fr 1fr;gap:22px;border-top:1px solid #829f91;padding:30px 0}.service-row:nth-of-type(even){margin-left:8%}.service-number{font-size:13px;font-weight:700}.service-row h3{font-size:1.7rem;line-height:1.15;letter-spacing:-.8px;margin:0}.service-row p{white-space:pre-wrap;margin:0}.closing-contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding-top:60px;padding-bottom:65px}.closing-contact h2{font-family:Georgia,serif;color:#e6c46b;font-weight:400;font-size:clamp(2.5rem,6vw,4rem);line-height:1.1;margin:0}.contact-details{display:flex;flex-direction:column;align-items:flex-start;gap:14px}.contact-details p{margin:0}.bold-footer{border-top:1px solid #43504a;padding-top:20px;padding-bottom:20px;color:#a6b7ac;font-size:12px}
+@media(max-width:700px){.dramatic-hero{grid-template-columns:1fr;padding-top:45px;padding-bottom:45px;gap:30px}.hero-title{font-size:clamp(2.8rem,12vw,5rem)}.service-row{grid-template-columns:35px 1fr;gap:14px}.service-row p{grid-column:2}.service-row:nth-of-type(even){margin-left:0}.closing-contact{grid-template-columns:1fr;gap:25px}.editorial-header{align-items:flex-start}.editorial-services h2{font-size:2.2rem}}
+`;
+export function themeCSS(theme) {return theme==='bold-creative'?boldCSS:siteCSS;}
+function boldTree(draft) {
+  const targets=contacts(draft);
+  const services=draft.services.slice(0,3).filter(s=>s.name||s.description);
+  const action=draft.ctaLabel?textBlock(targets.cta?'a':'span',draft.ctaLabel,targets.cta?{class:'cta',href:targets.cta}:{class:'cta cta-inactive'}):null;
+  return node('div',{class:'bold-creative'},[
+    node('header',{class:'bold-wrap editorial-header'},[textBlock('span',draft.businessName,{class:'wordmark'}),textBlock('a','Get in touch ↗',{href:'#contact'})]),
+    node('main',{},[
+      node('section',{class:'bold-wrap dramatic-hero'},[textBlock('h1',draft.businessName,{class:'hero-title'}),node('aside',{class:'hero-note'},[textBlock('p',draft.description),...(action?[action]:[])])]),
+      ...(services.length?[node('section',{id:'services',class:'editorial-services'},[node('div',{class:'bold-wrap'},[textBlock('h2','What we do.'),...services.map((s,i)=>node('article',{class:'service-row'},[textBlock('span',String(i+1).padStart(2,'0'),{class:'service-number','aria-hidden':'true'}),textBlock('h3',s.name),textBlock('p',s.description)]))])])]:[]),
+      node('section',{id:'contact',class:'bold-wrap closing-contact'},[textBlock('h2','Let’s make it happen.'),node('div',{class:'contact-details'},[
+        ...(draft.email?[textBlock(targets.email?'a':'p',draft.email,targets.email?{href:targets.email}:{})]:[]),
+        ...(draft.telephone?[textBlock(targets.phone?'a':'p',draft.telephone,targets.phone?{href:targets.phone}:{})]:[])
+      ])])
+    ]),
+    textBlock('footer',draft.businessName,{class:'bold-wrap bold-footer'})
   ]);
 }

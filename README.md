@@ -31,7 +31,7 @@ Slice 2 review: enter details, choose Bold Creative, close/reopen the same brows
 
 Existing Slice 1 tabs do not have persistence until the updated page is loaded. Export any edits you want to retain before refreshing an old tab. No migration from that old in-memory tab is claimed.
 
-Responsive Edit/Preview workspace controls and final integration review remain in Slice 3. No automatic AI writing, account, payment, or publication is performed.
+At narrow window widths (900px or less), use the keyboard-accessible Edit and Preview buttons to change the visible panel; at desktop widths, the editor and preview appear side by side and the switching buttons are intentionally hidden. Slice 3 source and mechanical verification were completed and committed; the owner's final ready-to-ship confirmation and hackathon publishing steps are separate. No automatic AI writing, account, payment, or publication is performed.
 
 ## Tests
 

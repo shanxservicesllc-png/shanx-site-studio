@@ -6,6 +6,17 @@ import {readDraft,saveDraft,clearDraft} from './storage.js';
 const restored=readDraft();
 let draft=restored.draft;
 const $=id=>document.getElementById(id);
+const compactWorkspace=window.matchMedia('(max-width: 900px)');
+function setWorkspaceView(view, focus=false) {
+  const selected=view==='preview'?'preview':'edit';
+  $('workspace-grid').dataset.view=selected;
+  $('show-edit').setAttribute('aria-pressed',String(selected==='edit'));
+  $('show-preview').setAttribute('aria-pressed',String(selected==='preview'));
+  if(focus && compactWorkspace.matches) $(selected==='edit'?'editor-panel':'preview-panel').focus();
+}
+$('show-edit').addEventListener('click',()=>setWorkspaceView('edit',true));
+$('show-preview').addEventListener('click',()=>setWorkspaceView('preview',true));
+compactWorkspace.addEventListener('change',()=>setWorkspaceView('edit'));
 function refresh(persist=true) {
   const links=contacts(draft);
   $('email-hint').textContent=draft.email&&!links.email?'Not a valid email address. Displayed as text only.':'';
@@ -56,7 +67,7 @@ $('clear-data').addEventListener('click',()=>{
     $('save-status').textContent='Saved data could not be cleared. Your current edits are preserved. Allow browser storage and try again.';
     return;
   }
-  draft=blankDraft();fillFields();$('brief').value='';
+  draft=blankDraft();fillFields();setWorkspaceView('edit');$('brief').value='';
   $('workspace').hidden=true;$('welcome').hidden=false;
   $('save-status').textContent='Saved draft cleared. Downloaded HTML files were not removed.';
   $('status').textContent='';refresh(false);$('brief').focus();

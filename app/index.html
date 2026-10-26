@@ -14,8 +14,9 @@
 <section id="workspace" hidden>
 <div class="workspace-bar"><div><p class="eyebrow">YOUR WEBSITE, TAKING SHAPE</p><h1>Make it yours.</h1></div><div class="actions"><div><label for="theme">Website theme</label><select id="theme"><option value="clean-professional">Clean Professional</option><option value="bold-creative">Bold Creative</option></select></div><button id="export" class="primary" type="button">Export HTML <span aria-hidden="true">↗</span></button><button id="clear-data" class="secondary" type="button">Clear Saved Data</button></div></div>
 <p id="status" class="status" role="status">Your page stays on this computer until you choose to share its exported file.</p>
-<div class="workspace-grid">
-<section class="editor" aria-label="Business details">
+<div class="workspace-switch" role="group" aria-label="Workspace view"><button id="show-edit" class="view-toggle" type="button" aria-controls="editor-panel" aria-pressed="true">Edit</button><button id="show-preview" class="view-toggle" type="button" aria-controls="preview-panel" aria-pressed="false">Preview</button></div>
+<div class="workspace-grid" id="workspace-grid" data-view="edit">
+<section class="editor" id="editor-panel" tabindex="-1" aria-label="Business details">
 <details class="brief-note"><summary>Your website brief</summary><label for="websiteBrief">Reference note — not exported</label><textarea id="websiteBrief" rows="3"></textarea></details>
 <div class="section-title"><span>01</span><h2>The essentials</h2></div>
 <label for="businessName">Business name</label><input id="businessName" autocomplete="organization" placeholder="Your business name">
@@ -28,7 +29,7 @@
 <label for="ctaLabel">Contact button label</label><input id="ctaLabel" placeholder="e.g. Let's talk">
 <label for="ctaTarget">Contact button destination</label><select id="ctaTarget" aria-describedby="cta-hint"><option value="email">Email</option><option value="phone">Phone</option></select><p id="cta-hint" class="hint"></p>
 </section>
-<section class="preview-panel" aria-label="Website preview"><div class="preview-top"><span><i aria-hidden="true"></i> LIVE PREVIEW</span><span id="preview-theme">Clean Professional</span></div><iframe id="preview" title="Live website preview" sandbox="allow-same-origin"></iframe><p class="preview-foot">Your exported page is one self-contained file. No hosting or subscription required.</p></section>
+<section class="preview-panel" id="preview-panel" tabindex="-1" aria-label="Website preview"><div class="preview-top"><span><i aria-hidden="true"></i> LIVE PREVIEW</span><span id="preview-theme">Clean Professional</span></div><iframe id="preview" title="Live website preview" sandbox="allow-same-origin"></iframe><p class="preview-foot">Your exported page is one self-contained file. No hosting or subscription required.</p></section>
 </div></section>
 </main>
 <footer class="app-footer">ShanX Services LLC <span>Built here. Yours to take anywhere.</span></footer>
